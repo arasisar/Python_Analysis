@@ -1,13 +1,13 @@
 pip install pandas
 import pandas
 
-data = pandas.read_csv("C:\\Users\\aborucki\Desktop\pandas\weather_year.csv")
+>>> data = pandas.read_csv("C:\\Users\\aborucki\Desktop\pandas\weather_year.csv")
 
-len(data)
+>>> len(data)
 366
 
 # columns names
-data.columns
+>>>data.columns
 Index(['EDT', 'Max TemperatureF', 'Mean TemperatureF', 'Min TemperatureF',
        'Max Dew PointF', 'MeanDew PointF', 'Min DewpointF', 'Max Humidity',
        ' Mean Humidity', ' Min Humidity', ' Max Sea Level PressureIn',
@@ -19,7 +19,7 @@ Index(['EDT', 'Max TemperatureF', 'Mean TemperatureF', 'Min TemperatureF',
       
 
 # Columns can be accessed in two ways. The first is using the DataFrame like a dictionary with string keys:
-data["EDT"]
+>>> data["EDT"]
 
 0      2012-3-10
 1      2012-3-11
@@ -51,6 +51,77 @@ Name: EDT, dtype: object
 365    2013-3-10
 Name: EDT, dtype: object
 >>> 
+
+
+>>> data[["EDT", "Mean TemperatureF"]].head(10)
+         EDT  Mean TemperatureF
+0  2012-3-10                 40
+1  2012-3-11                 49
+2  2012-3-12                 62
+3  2012-3-13                 63
+4  2012-3-14                 62
+5  2012-3-15                 69
+6  2012-3-16                 64
+7  2012-3-17                 62
+8  2012-3-18                 70
+9  2012-3-19                 72
+>>> 
+
+>>> data.columns
+Index(['EDT', 'Max TemperatureF', 'Mean TemperatureF', 'Min TemperatureF',
+       'Max Dew PointF', 'MeanDew PointF', 'Min DewpointF', 'Max Humidity',
+       ' Mean Humidity', ' Min Humidity', ' Max Sea Level PressureIn',
+       ' Mean Sea Level PressureIn', ' Min Sea Level PressureIn',
+       ' Max VisibilityMiles', ' Mean VisibilityMiles', ' Min VisibilityMiles',
+       ' Max Wind SpeedMPH', ' Mean Wind SpeedMPH', ' Max Gust SpeedMPH',
+       'PrecipitationIn', ' CloudCover', ' Events', ' WindDirDegrees'],
+      dtype='object')
+>>> 
+
+# rename columns
+
+data.columns = ["date", "max_temp", "mean_temp", "min_temp", "max_dew",
+                "mean_dew", "min_dew", "max_humidity", "mean_humidity",
+                "min_humidity", "max_pressure", "mean_pressure",
+                "min_pressure", "max_visibilty", "mean_visibility",
+                "min_visibility", "max_wind", "mean_wind", "min_wind",
+                "precipitation", "cloud_cover", "events", "wind_dir"]
+                
+>>> data.mean_temp.head()
+0    40
+1    49
+2    62
+3    63
+4    62
+Name: mean_temp, dtype: int64
+>>> 
+
+#standard deviation
+>>> data.mean_temp.std()
+18.43650599625107
+>>> 
+
+# Some methods, like plot() and hist() produce plots using matplotlib.
+
+>>> data.mean_temp.hist()
+<matplotlib.axes._subplots.AxesSubplot at 0x8bc3f98>
+
+>>> data.mean_temp.plot()
+<matplotlib.axes._subplots.AxesSubplot at 0x91a0668>
+
+
+# Methods like sum() and std() work on entire columns. 
+# We can run our own functions across all values in a column (or row) using apply().
+
+
+>>> from datetime import datetime
+>>> datetime.strptime(first_date, "%Y-%m-%d")
+datetime.datetime(2012, 3, 13, 0, 0)
+>>> 
+
+
+
+
 
 
 
