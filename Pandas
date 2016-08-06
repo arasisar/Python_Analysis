@@ -1,1 +1,57 @@
-                       
+pip install pandas
+import pandas
+
+data = pandas.read_csv("C:\\Users\\aborucki\Desktop\pandas\weather_year.csv")
+
+len(data)
+366
+
+# columns names
+data.columns
+Index(['EDT', 'Max TemperatureF', 'Mean TemperatureF', 'Min TemperatureF',
+       'Max Dew PointF', 'MeanDew PointF', 'Min DewpointF', 'Max Humidity',
+       ' Mean Humidity', ' Min Humidity', ' Max Sea Level PressureIn',
+       ' Mean Sea Level PressureIn', ' Min Sea Level PressureIn',
+       ' Max VisibilityMiles', ' Mean VisibilityMiles', ' Min VisibilityMiles',
+       ' Max Wind SpeedMPH', ' Mean Wind SpeedMPH', ' Max Gust SpeedMPH',
+       'PrecipitationIn', ' CloudCover', ' Events', ' WindDirDegrees'],
+      dtype='object')
+      
+
+# Columns can be accessed in two ways. The first is using the DataFrame like a dictionary with string keys:
+data["EDT"]
+
+0      2012-3-10
+1      2012-3-11
+2      2012-3-12
+3      2012-3-13
+         ...    
+360     2013-3-5
+361     2013-3-6
+362     2013-3-7
+363     2013-3-8
+364     2013-3-9
+365    2013-3-10
+Name: EDT, dtype: object
+
+# second way:
+>>> data.EDT
+0      2012-3-10
+1      2012-3-11
+2      2012-3-12
+3      2012-3-13
+4      2012-3-14
+5      2012-3-15
+6      2012-3-16
+7      2012-3-17
+8      2012-3-18
+         ...    
+363     2013-3-8
+364     2013-3-9
+365    2013-3-10
+Name: EDT, dtype: object
+>>> 
+
+
+
+
